@@ -6,6 +6,7 @@ const burger = (props) => {
         const new_ingredients = Object.keys(props.ingredients)
         const transformed_ingredients = new_ingredients.map(keys=>{
             return [...Array(props.ingredients[keys])].map((_,i) =>{
+                
                 return <Burger_Ingredient type={keys} key={keys+i}/>
             })
 
@@ -14,7 +15,7 @@ const burger = (props) => {
             
 
         console.log("------------new Ingredients------------",{new_ingredients})
-        console.log("------------Ingredients------------",{transformed_ingredients})
+        console.log("11---33----44-----Ingredients------------",{transformed_ingredients})
         
         return(
             <div className={classes.Burger}>
