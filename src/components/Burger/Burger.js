@@ -5,20 +5,22 @@ import Burger_Ingredient from './Burger_ingredients/Burger_ingredients'
 
 const burger = (props) => {
         const new_ingredients = Object.keys(props.ingredients)
+        let cnt = 0;
         let transformed_ingredients = new_ingredients.map(keys=>{
+            if (props.ingredients[keys] === 0)
+                cnt =cnt + 1
             return [...Array(props.ingredients[keys])].map((_,i) =>{
                 
-                return <Burger_Ingredient type={keys} key={keys+i}/>
+                return <Burger_Ingredient type={keys} key={keys+i}/> 
             })
 
-        }).reduce((acc,val)=>{
-                return acc.concat(val)
-        },[])
+        })
+
         console.log("aaaaa",{transformed_ingredients})
         console.log("------------new Ingredients------------",{new_ingredients})
         console.log("11---33----44-----Ingredients------------",{transformed_ingredients})
-        if (transformed_ingredients.length == 0){
-            transformed_ingredients=<p>Please enter ingredients</p>
+        if (cnt === new_ingredients.length){
+            transformed_ingredients=<p>Start Adding Ingredients.....</p>
         }
         return(
             <div className={classes.Burger}>
@@ -29,3 +31,4 @@ const burger = (props) => {
         )
 }
 export default burger;
+ 
