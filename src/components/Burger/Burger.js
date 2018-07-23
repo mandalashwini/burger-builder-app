@@ -13,6 +13,7 @@ const burger = (props) => {
                 
                 return <Burger_Ingredient type={keys} key={keys+i}/> 
             })
+    
 
         })
 
