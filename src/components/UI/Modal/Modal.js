@@ -1,6 +1,10 @@
 import React from 'react'
 import classes from './Modal.css'
+import Aux from '../../../hoc/Aux'
+import Backdrop from '../Backdrop/Backdrop'
 const Modal = (props) =>(
+    <Aux>
+        <Backdrop show={props.show} clicked={props.backdrop_click}/>
     <div className={classes.Modal}  
         style={{
             transform: props.show? 'transformY(0)' : 'transformY(-100vh)' ,
@@ -9,5 +13,6 @@ const Modal = (props) =>(
     >
      {props.children}
      </div>
+     </Aux>
 )
 export default Modal
