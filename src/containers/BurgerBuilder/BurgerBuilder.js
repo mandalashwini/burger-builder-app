@@ -31,6 +31,9 @@ class BurgerBuilder extends Component{
     disable_model = () => {
         this.setState({purchasing: false})
     }
+    continue_purchase_alert =() => {
+        alert("You Can Continue purchasing!!");
+    }
 
 
     updatePurchasable = (purchaseInfo) => {
@@ -81,9 +84,12 @@ class BurgerBuilder extends Component{
         }
         return(
             <Aux>
+                { this.state.purchasing ? (
                 <Modal show={this.state.purchasing} backdrop_click={this.disable_model}>
-                    <OrderSummary ingredients={this.state.ingredients} />
-                </Modal>
+                    <OrderSummary ingredients={this.state.ingredients} 
+                    cancel_button={this.disable_model}
+                    continue_button={this.continue_purchase_alert}/>
+                </Modal>) : null}
                     <Burger ingredients={this.state.ingredients}/>
                     <BuildControls AddIngredients={this.addIngredientHandler} 
                     RemoveIngredients={this.removeIngredientsHandler}

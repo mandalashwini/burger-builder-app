@@ -1,6 +1,6 @@
 import React from 'react'
 import Aux from '../../../hoc/Aux'
-import { Transform } from 'stream';
+import Button from '../../UI/Button/Button'
 const OrderSummary = (props) => {
     const order_ingredients = Object.keys(props.ingredients).map(key =>{
             return(
@@ -16,6 +16,10 @@ const OrderSummary = (props) => {
             <ul>
                 {order_ingredients}
             </ul>
+          <Button btnType="Success" clicked={props.continue_button}>Continue</Button>
+          <Button btnType="Danger" clicked={props.cancel_button}>Cancel</Button>
+
+            
         </Aux>
     )
 
