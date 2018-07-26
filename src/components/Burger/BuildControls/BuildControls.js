@@ -21,7 +21,7 @@ const control = [
                     disabled={props.disabled[ctrl.type]} />
             ))
             } 
-            <button disabled={!props.purchase} className={classes.OrderButton}>ORDER NOW</button>
+            <button onClick={props.ordered} disabled={!props.purchase} className={classes.OrderButton}>ORDER NOW</button>
             
             </div>
  ); 

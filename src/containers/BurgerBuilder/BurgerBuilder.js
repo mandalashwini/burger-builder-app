@@ -21,8 +21,21 @@ class BurgerBuilder extends Component{
             Bacon : 0
         },
         total_price: 0,
-        purchasable:false
+        purchasable:false,
+        purchasing:false
     }
+
+    order_purchase = () => {
+        this.setState({purchasing : true})
+    }
+    disable_model = () => {
+        this.setState({purchasing: false})
+    }
+    continue_purchase_alert =() => {
+        alert("You Can Continue purchasing!!");
+    }
+
+
     updatePurchasable = (purchaseInfo) => {
         //const purchaseInfo = {...this.state.ingredients}
         const sum = Object.keys(purchaseInfo).map(keys =>{
@@ -71,14 +84,19 @@ class BurgerBuilder extends Component{
         }
         return(
             <Aux>
-                <Modal>
-                    <OrderSummary ingredients={this.state.ingredients} />
-                </Modal>
+                { this.state.purchasing ? (
+                <Modal show={this.state.purchasing} backdrop_click={this.disable_model}>
+                    <OrderSummary ingredients={this.state.ingredients} 
+                    cancel_button={this.disable_model}
+                    continue_button={this.continue_purchase_alert}
+                    price={this.state.total_price}/>
+                </Modal>) : null}
                     <Burger ingredients={this.state.ingredients}/>
                     <BuildControls AddIngredients={this.addIngredientHandler} 
                     RemoveIngredients={this.removeIngredientsHandler}
                     disabled={disabledInfo} 
                     purchase ={this.state.purchasable}
+                    ordered={this.order_purchase}
                     price={this.state.total_price}/> 
             </Aux>
         )
