@@ -16,10 +16,6 @@ const burger = (props) => {
     
 
         })
-
-        console.log("aaaaa",{transformed_ingredients})
-        console.log("------------new Ingredients------------",{new_ingredients})
-        console.log("11---33----44-----Ingredients------------",{transformed_ingredients})
         if (cnt === new_ingredients.length){
             transformed_ingredients=<p>Start Adding Ingredients.....</p>
         }
