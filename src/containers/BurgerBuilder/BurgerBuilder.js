@@ -115,6 +115,8 @@ class BurgerBuilder extends Component{
         
         for (let i in disabledInfo){
             disabledInfo[i] = disabledInfo[i] <= 0
+            console.log(disabledInfo[i])
+           // debugger
         }
         let orderSummary = <OrderSummary ingredients={this.state.ingredients} 
                             cancel_button={this.disable_model}
