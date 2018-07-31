@@ -6,7 +6,7 @@ const control = [
     {label: 'cheess', type:'cheese'},
     {label: 'Salad', type:'salad'},
     {label: 'Meat', type: 'meat'},
-    {label:'Bacon', type: 'Bacon'}
+    {label:'Bacon', type: 'bacon'}
 
 ]
 
