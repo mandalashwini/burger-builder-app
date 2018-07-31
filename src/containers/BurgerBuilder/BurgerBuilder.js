@@ -6,7 +6,7 @@ import Modal from '../../components/UI/Modal/Modal'
 import Spinner from '../../components/UI/Spinner/Spinner'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import axios from '../../axios-order'
-
+import Axios from 'axios'
 
 const INGREDIENTS_PRICE = {
     cheese : 0.8,
@@ -104,6 +104,16 @@ class BurgerBuilder extends Component{
         //debugger
         this.updatePurchasable(updatedIngredients);
     }
+    componentDidMount () {
+        Axios.get('https://my-burger-project-b1b5e.firebaseio.com/ingredients.json')
+        .then(res => {
+            console.log("successs ingredients",res)
+            this.setState ( {ingredients : res.data})
+        })
+        .catch(res =>{
+            console.log("Fail",res)
+        })
+    }
 
     render(){
         const disabledInfo = {...this.state.ingredients}
@@ -118,9 +128,19 @@ class BurgerBuilder extends Component{
                             continue_button={this.continue_purchase_alert}
                             price={this.state.total_price}/>;
         if (this.state.loading){
-            orderSummary = <Spinner />
+            orderSummary = (
+                        <Spinner />
+                        )
         }
-        let burger = <Spinner />
+        let burger = (
+                        
+                             <Modal show>
+                        <Spinner />
+                             </Modal>
+                        
+                     )
+
+
         if(this.state.ingredients)
         burger =(
                     <Aux>
@@ -141,6 +161,7 @@ class BurgerBuilder extends Component{
                 <Modal show={this.state.purchasing} backdrop_click={this.disable_model}>
                     {orderSummary}
                 </Modal>) : null}
+    
                 {burger}
                     
             </Aux>
