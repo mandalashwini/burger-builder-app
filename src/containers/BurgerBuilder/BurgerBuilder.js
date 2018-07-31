@@ -18,12 +18,7 @@ class BurgerBuilder extends Component{
 
 
     state = {
-        ingredients :{
-            cheese : 0,
-            salad :0,
-            meat : 0,
-            Bacon : 0
-        },
+        ingredients :null,
         total_price: 0,
         purchasable:false,
         purchasing:false,
@@ -125,7 +120,19 @@ class BurgerBuilder extends Component{
         if (this.state.loading){
             orderSummary = <Spinner />
         }
-
+        let burger = <Spinner />
+        if(this.state.ingredients)
+        burger =(
+                    <Aux>
+                    <Burger ingredients={this.state.ingredients}/>
+                    <BuildControls AddIngredients={this.addIngredientHandler} 
+                    RemoveIngredients={this.removeIngredientsHandler}
+                    disabled={disabledInfo} 
+                    purchase ={this.state.purchasable}
+                    ordered={this.order_purchase}
+                    price={this.state.total_price}/> 
+                    </Aux>
+                  )
 
         return(
 
@@ -134,14 +141,8 @@ class BurgerBuilder extends Component{
                 <Modal show={this.state.purchasing} backdrop_click={this.disable_model}>
                     {orderSummary}
                 </Modal>) : null}
-                
-                    <Burger ingredients={this.state.ingredients}/>
-                    <BuildControls AddIngredients={this.addIngredientHandler} 
-                    RemoveIngredients={this.removeIngredientsHandler}
-                    disabled={disabledInfo} 
-                    purchase ={this.state.purchasable}
-                    ordered={this.order_purchase}
-                    price={this.state.total_price}/> 
+                {burger}
+                    
             </Aux>
         )
     }
