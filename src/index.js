@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import axios from 'axios'
 import registerServiceWorker from './registerServiceWorker';
+import {BrowserRouter} from 'react-router-dom'
 
 
 {/* axios.interceptors.request.use(req =>{
@@ -24,5 +25,11 @@ axios.interceptors.response.use(res =>{
 
 });*/}
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+const app =(
+    < BrowserRouter >
+            <App/>
+        </BrowserRouter >
+)
+
+ReactDOM.render(app, document.getElementById('root'));
 registerServiceWorker();

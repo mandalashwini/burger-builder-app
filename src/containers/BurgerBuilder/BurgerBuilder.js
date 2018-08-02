@@ -33,7 +33,7 @@ class BurgerBuilder extends Component{
         this.setState({purchasing: false})
     }
     continue_purchase_alert =() => {
-        const data ={
+       /* const data ={
             ingredients:this.state.ingredients,
             total_price:this.state.total_price,
             customer_datails:{
@@ -46,10 +46,8 @@ class BurgerBuilder extends Component{
                 email_id:"ashu@gmail.com"
             }
         }
-        //alert("You Can Continue purchasing!!");
-        this.setState( {loading :  true})
-        //let saved_flag= false
-        axios.post('/orders.json',data)
+        
+         axios.post('/orders.json',data)
         .then(res =>{
             console.log("Success",res)
             this.setState ({loading : false, purchasing : false ,saved_flag: true})
@@ -60,10 +58,23 @@ class BurgerBuilder extends Component{
             console.log("Fail",res)
             this.setState ({loading : false , purchasing : false})
         })
+        */
+        //alert("You Can Continue purchasing!!");
+        this.setState( {loading :  true})
+        //let saved_flag= false
+       const paramQuery = []
+       for(let i in this.state.ingredients){
+           paramQuery.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
+           console.log(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
+       }
+       const query = paramQuery.join('&')
+       this.props.history.push({
+            pathname:'/checkout',
+            search:'?'+ query})
         
     }
-
-
+    
+    
     updatePurchasable = (purchaseInfo) => {
         //const purchaseInfo = {...this.state.ingredients}
         const sum = Object.keys(purchaseInfo).map(keys =>{
