@@ -3,6 +3,7 @@ import Button from '../../../components/UI/Button/Button'
 import classes from './ContactData.css'
 import axios from '../../../axios-order'
 import Spinner from '../../../components/UI/Spinner/Spinner'
+import Orders from '../../Orders/Orders';
 class ContactData extends Component{
     constructor(props){
         super(props)
@@ -21,11 +22,12 @@ class ContactData extends Component{
     }
     orderHandler = (event) =>{
         event.preventDefault();
+        debugger
         this.setState ({loading : true })
         console.log("order handler",this.props.ingredients)
-        const data ={
-            ingredients:this.state.ingredients,
-            total_price:this.state.total_price,
+        const orders ={
+            ingredients:this.props.ingredients,
+            total_price:this.props.total_price,
             customer_datails:{
                 name:'Ashwini',
                 age:'22',
@@ -37,7 +39,7 @@ class ContactData extends Component{
             } 
         }
         
-         axios.post('/orders.json',data)
+         axios.post('/orders.json',orders)
         .then(res =>{
             console.log("Success",res)
             this.setState ({loading : false, purchasing : false ,saved_flag: true})
