@@ -24,7 +24,7 @@ class ContactData extends Component{
         event.preventDefault();
         debugger
         this.setState ({loading : true })
-        console.log("order handler",this.props.ingredients)
+        console.log("order handler",this.props.total_price)
         const orders ={
             ingredients:this.props.ingredients,
             total_price:this.props.total_price,
