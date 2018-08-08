@@ -134,7 +134,8 @@ class BurgerBuilder extends Component{
     }*/
 
     render(){
-        const disabledInfo = {...this.props.ingredients}
+        console.log("aaa",this.props.store_ingredients)
+        const disabledInfo = {...this.props.store_ingredients}
         
         for (let i in disabledInfo){
             disabledInfo[i] = disabledInfo[i] <= 0
@@ -159,10 +160,10 @@ class BurgerBuilder extends Component{
                      )
 
 
-        if(this.props.ingredients)
+        if(this.props.store_ingredients)
         burger =(
                     <Aux>
-                    <Burger ingredients={this.state.ingredients}/>
+                    <Burger ingredients={this.props.store_ingredients}/>
                     <BuildControls 
                     AddIngredients={this.props.addIngredients} 
                     RemoveIngredients={this.props.removeIngredients}
@@ -174,7 +175,6 @@ class BurgerBuilder extends Component{
                   )
 
         return(
-
             <Aux>
                 { this.state.purchasing ? (
                 <Modal show={this.state.purchasing} backdrop_click={this.disable_model}>
@@ -189,7 +189,7 @@ class BurgerBuilder extends Component{
 }
 const mapStateToProps = (state) =>{
     return{
-    ingredients : state.ingredients
+    store_ingredients : state.ingredients
     }
 }
 
