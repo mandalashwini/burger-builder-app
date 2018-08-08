@@ -63,6 +63,7 @@ class BurgerBuilder extends Component{
         this.setState( {loading :  true})
         //let saved_flag= false
        const paramQuery = []
+       paramQuery.push(encodeURIComponent("total_price")+ "=" + encodeURIComponent(this.state.total_price))
        for(let i in this.state.ingredients){
            paramQuery.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
            console.log(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))

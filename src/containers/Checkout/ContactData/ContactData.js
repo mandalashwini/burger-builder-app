@@ -4,18 +4,57 @@ import classes from './ContactData.css'
 import axios from '../../../axios-order'
 import Spinner from '../../../components/UI/Spinner/Spinner'
 import Orders from '../../Orders/Orders';
+import Input from '../../../components/UI/Input/Input'
 class ContactData extends Component{
     constructor(props){
         super(props)
-       this.state={ customer_datails:{
-                        name:'',
-                        age:'',
-                        address:{
-                            area:'',
-                            pincode:''
+       this.state={ 
+           
+            orderForm:{
+                    name:{
+                        elementType:'input',
+                        elementConfig:{
+                            type:'text',
+                            placeholder:'Your Name'
                         },
-                        email_id:''
+                        value:''
                     },
+                    age:{
+                        elementType:'input',
+                        elementConfig:{
+                            type:'text',
+                            placeholder:'Your Age'
+                        },
+                        value:''
+                    },
+                    address:{
+                            area:{
+                                elementType:'input',
+                                elementConfig:{
+                                    type:'text',
+                                    placeholder:'Area'
+                                },
+                                value:''
+                            },
+                            pincode:{
+                                elementType:'input',
+                                elementConfig:{
+                                    type:'text',
+                                    placeholder:'Pincode'
+                                },
+                                value:''
+                            },
+                        },
+                        email_id:{
+                            elementType:'input',
+                            elementConfig:{
+                                type:'email',
+                                placeholder:'Your E-Mail'
+                            },
+                            value:''
+                        },
+                    },
+                    
                     loading: false 
                  }
         
@@ -56,11 +95,11 @@ class ContactData extends Component{
             <div>
                 <h4>Enter Your Contact Details</h4>
                 <form>
-                <input className={classes.Input} type="text" name="name" placeholder="Your Name" />
-                <input className={classes.Input} type="email" name="email" placeholder="Your Email" />
-                <input className={classes.Input} type="text" name="age" placeholder="Age" />
-                <input className={classes.Input} type="text" name="area" placeholder="Area" />
-                <input className={classes.Input} type="text" name="pincode" placeholder="Pincode" />
+                <Input inputtype="text" type="text" name="name" placeholder="Your Name" />
+                <Input inputtype="text" type="email" name="email" placeholder="Your Email" />
+                <Input inputtype="text" type="text" name="age" placeholder="Age" />
+                <Input inputtype="text" type="text" name="area" placeholder="Area" />
+                <Input inputtype="text" type="text" name="pincode" placeholder="Pincode" />
                 <Button btnType="Success" clicked={this.orderHandler}>Order</Button>
                 </form>
             </div>)

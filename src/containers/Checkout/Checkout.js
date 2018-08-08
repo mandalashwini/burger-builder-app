@@ -28,7 +28,7 @@ class Checkout extends Component{
        debugger
        let price= null
        for(let params of query.entries()){
-                if(params[0] === 'price'){
+                if(params[0] === 'total_price'){
                         price =params[1]
                     
         

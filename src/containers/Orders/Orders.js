@@ -35,7 +35,7 @@ class Orders extends Component{
                 {this.state.orders.map(order=>(
                         <Order key={order.id}
                         ingredients={order.ingredients}
-                        price={order.price}/>
+                        total_price={parseFloat(order.total_price).toFixed(2)}/>
                 ))}
                 </div>
         )
