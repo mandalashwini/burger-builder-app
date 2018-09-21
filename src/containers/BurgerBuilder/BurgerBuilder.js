@@ -117,14 +117,15 @@ class BurgerBuilder extends Component{
         this.updatePurchasable(updatedIngredients);
     }
     componentDidMount () {
-        Axios.get('https://my-burger-project-b1b5e.firebaseio.com/ingredients.json')
+       /* Axios.get('https://my-burger-project-b1b5e.firebaseio.com/ingredients.json')
         .then(res => {
             console.log("successs ingredients",res)
             this.setState ( {ingredients : res.data})
         })
         .catch(res =>{
             console.log("Fail",res)
-        })
+        })*/
+        console.log("Component did mount");
     }
 
     render(){

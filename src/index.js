@@ -5,8 +5,9 @@ import App from './App';
 import axios from 'axios'
 import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter} from 'react-router-dom'
-
-
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
+import reducer from './store/reducers'
 {/* axios.interceptors.request.use(req =>{
     console.log("success111",req)
     return req
@@ -24,11 +25,13 @@ axios.interceptors.response.use(res =>{
     return error
 
 });*/}
-
+const store = createStore(reducer)
 const app =(
+    <Provider store={store}>
     < BrowserRouter >
             <App/>
         </BrowserRouter >
+        </Provider>
 )
 
 ReactDOM.render(app, document.getElementById('root'));
