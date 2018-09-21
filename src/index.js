@@ -8,8 +8,6 @@ import {BrowserRouter} from 'react-router-dom'
 import reducer from './store/reducers'
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
-
-
 {/* axios.interceptors.request.use(req =>{
     console.log("success111",req)
     return req
@@ -28,11 +26,12 @@ axios.interceptors.response.use(res =>{
 
 });*/}
 const store = createStore(reducer)
-
 const app =(
+    <Provider store={store}>
     < BrowserRouter >
             <Provider store={store}><App/></Provider>
         </BrowserRouter >
+        </Provider>
 )
 
 ReactDOM.render(app, document.getElementById('root'));
