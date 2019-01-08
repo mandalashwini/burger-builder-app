@@ -63,6 +63,7 @@ class BurgerBuilder extends Component{
         this.setState( {loading :  true})
         //let saved_flag= false
        const paramQuery = []
+       paramQuery.push(encodeURIComponent("total_price")+ "=" + encodeURIComponent(this.state.total_price))
        for(let i in this.state.ingredients){
            paramQuery.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
            console.log(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
@@ -116,14 +117,15 @@ class BurgerBuilder extends Component{
         this.updatePurchasable(updatedIngredients);
     }
     componentDidMount () {
-        Axios.get('https://my-burger-project-b1b5e.firebaseio.com/ingredients.json')
+       /* Axios.get('https://my-burger-project-b1b5e.firebaseio.com/ingredients.json')
         .then(res => {
             console.log("successs ingredients",res)
             this.setState ( {ingredients : res.data})
         })
         .catch(res =>{
             console.log("Fail",res)
-        })
+        })*/
+        console.log("Component did mount");
     }
 
     render(){
